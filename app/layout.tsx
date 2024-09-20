@@ -24,7 +24,9 @@ export default function RootLayout({
           >
             LEGOshelf
           </Link>
-          <Button>Your shelf</Button>
+          <Link href="/your-shelf">
+            <Button>Your shelf</Button>
+          </Link>
         </header>
         {children}
         <footer className="flex flex-col items-center justify-end gap-2 border-t-2 border-lego-red py-6 sm:flex-row">
