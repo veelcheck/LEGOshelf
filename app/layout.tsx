@@ -37,7 +37,7 @@ export default function RootLayout({
           >
             &#169; Veelcheck 2024
           </a>
-          I made this and it's my precious.
+          <p>I made this and it's my precious.</p>
         </footer>
       </body>
     </html>
