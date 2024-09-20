@@ -20,7 +20,7 @@ export default function RootLayout({
         <header className="flex flex-col items-center justify-between gap-4 bg-lego-yellow px-10 py-6 sm:flex-row sm:gap-0">
           <Link
             href="/"
-            className="w-fit cursor-pointer rounded border-4 border-white p-4 text-4xl font-bold text-lego-red outline outline-black"
+            className="w-fit cursor-pointer rounded border-4 border-white px-4 py-2 text-4xl font-bold text-lego-red outline outline-black"
           >
             LEGOshelf
           </Link>
@@ -29,11 +29,11 @@ export default function RootLayout({
           </Link>
         </header>
         {children}
-        <footer className="flex flex-col items-center justify-end gap-2 border-t-2 border-lego-red py-6 sm:flex-row">
+        <footer className="mt-auto flex flex-col items-center justify-end gap-2 border-t-2 border-lego-red py-2 text-xs sm:flex-row">
           <a
             href="https://agnieszka-wilczek.netlify.app"
             target="_blank"
-            className="mr-2 rounded-md bg-lego-red p-2 text-white"
+            className="md:mr-2 md:rounded-md md:bg-lego-red md:p-2 md:text-white"
           >
             &#169; Veelcheck 2024
           </a>

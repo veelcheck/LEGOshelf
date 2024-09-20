@@ -9,7 +9,7 @@ export default function Search() {
     <form className="flex h-64 flex-col items-center justify-center gap-2 px-2 sm:flex-row md:h-[600px] md:text-3xl">
       <label
         htmlFor="lego-search"
-        className="rounded-md bg-lego-red bg-opacity-80 p-4 font-semibold text-white"
+        className="rounded-md bg-lego-yellow bg-opacity-80 p-4 font-semibold text-black"
       >
         Search by set number:
       </label>
@@ -25,7 +25,7 @@ export default function Search() {
         onInput={handleInput}
       />
 
-      <Button className="bg-lego-yellow">Search</Button>
+      <Button className="bg-lego-red text-base md:text-3xl">Search</Button>
     </form>
   );
 }
