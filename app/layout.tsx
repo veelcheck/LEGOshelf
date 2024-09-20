@@ -1,10 +1,12 @@
-import type { Metadata } from 'next';
-import './globals.css';
+import type { Metadata } from "next";
+import "./globals.css";
+import Button from "@/components/Button";
+import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: 'Lego Shelf',
+  title: "Lego Shelf",
   description:
-    'Create your virtual LEGO Collection, discover new builds and never again forget what you already own. Have fun with your brick!',
+    "Create your virtual LEGO Collection, discover new builds and never again forget what you already own. Have fun with your brick!",
 };
 
 export default function RootLayout({
@@ -13,22 +15,24 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang='en'>
-      <body className='antialiased flex flex-col sm:justify-between container mx-auto font-mono min-h-screen'>
-        <header className='bg-lego-yellow gap-4 sm:gap-0 py-6 px-10 flex flex-col sm:flex-row justify-between items-center'>
-          <p className='text-lego-red text-4xl w-fit font-bold border border-lego-red p-4 rounded'>
+    <html lang="en">
+      <body className="container mx-auto flex min-h-screen flex-col font-mono antialiased sm:justify-between">
+        <header className="flex flex-col items-center justify-between gap-4 bg-lego-yellow px-10 py-6 sm:flex-row sm:gap-0">
+          <Link
+            href="/"
+            className="w-fit cursor-pointer rounded border-4 border-white p-4 text-4xl font-bold text-lego-red outline outline-black"
+          >
             LEGOshelf
-          </p>
-          <button className='bg-black text-white font-bold p-4 rounded-md text-2xl'>
-            Your shelf
-          </button>
+          </Link>
+          <Button>Your shelf</Button>
         </header>
         {children}
-        <footer className='border-t-2 border-lego-red py-6 flex flex-col gap-2 sm:flex-row items-center justify-end'>
+        <footer className="flex flex-col items-center justify-end gap-2 border-t-2 border-lego-red py-6 sm:flex-row">
           <a
-            href='https://agnieszka-wilczek.netlify.app'
-            target='_blank'
-            className='bg-lego-red text-white p-2 rounded-md mr-2'>
+            href="https://agnieszka-wilczek.netlify.app"
+            target="_blank"
+            className="mr-2 rounded-md bg-lego-red p-2 text-white"
+          >
             &#169; Veelcheck 2024
           </a>
           I made this and it's my precious.

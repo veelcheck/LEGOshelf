@@ -1,14 +1,13 @@
-import Link from 'next/link';
+import Link from "next/link";
+import Button from "@/components/Button";
 
 export default function NotFound() {
   return (
-    <main className='text-center px-10 py-6 h-screen sm:h-auto'>
+    <main className="h-screen px-10 py-6 text-center sm:h-auto">
       <h1>404 | Page not found</h1>
-      <p className='pb-6'>Could not find requested resources.</p>
-      <Link
-        href='/'
-        className='bg-blue-600 px-4 py-2 rounded-md text-white'>
-        Home Shelf
+      <p className="pb-6">Could not find requested resources.</p>
+      <Link href="/">
+        <Button className="bg-blue-600 py-2 text-base">Home Shelf</Button>
       </Link>
     </main>
   );
