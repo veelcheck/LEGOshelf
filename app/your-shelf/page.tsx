@@ -2,12 +2,13 @@
 import Button from "@/components/Button";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
-import type { FieldValues } from "react-hook-form";
 import { z } from "zod";
+
+type TSignUpSchema = z.infer<typeof signUpSchema>;
 
 const signUpSchema = z
   .object({
-    username: z.string(),
+    name: z.string(),
     email: z.string().email(),
     password: z
       .string()
@@ -28,13 +29,21 @@ export default function YourShelf() {
     handleSubmit,
     formState: { errors, isSubmitting },
     reset,
-  } = useForm({
+  } = useForm<TSignUpSchema>({
     resolver: zodResolver(signUpSchema),
   });
 
-  const onSubmit = async (data: FieldValues) => {
-    // Submit to server...
-    await new Promise((resolve) => setTimeout(resolve, 1000));
+  console.log("Is Submitting: ", isSubmitting);
+
+  const onSubmit = async (data: TSignUpSchema) => {
+    try {
+      // Simulate form submission
+      console.log(data);
+      await new Promise((resolve) => setTimeout(resolve, 1000));
+      reset();
+    } catch (error) {
+      console.error("Form submission: ", error);
+    }
   };
 
   return (
@@ -44,23 +53,23 @@ export default function YourShelf() {
       </h1>
       <div className="flex flex-col items-center justify-center md:flex-row md:items-stretch">
         <form
-          onSubmit={handleSubmit(onSubmit)}
+          // onSubmit={handleSubmit(onSubmit)}
           className="mb-4 flex flex-col md:mb-0 md:border-r md:border-lego-red md:pr-4"
         >
           <label className="pl-2">email</label>
           <input
-            {...register("loggingEmail")}
+            // {...register("loggingEmail")}
             className="rounded border px-4 py-2"
           ></input>
           <label className="pl-2">password</label>
           <input
-            {...register("loggingPassword")}
+            // {...register("loggingPassword")}
             className="mb-2 rounded border px-4 py-2"
           ></input>
           <Button
-            className="mt-auto bg-lego-red py-2 disabled:bg-gray-500"
+            className="mt-auto bg-lego-red"
             type="submit"
-            disabled={isSubmitting}
+            // disabled={isSubmitting}
           >
             Log to your shelf
           </Button>
@@ -108,10 +117,10 @@ export default function YourShelf() {
           )}
           <Button
             disabled={isSubmitting}
-            className="mt-2 py-2 disabled:bg-gray-500 dark:bg-blue-600"
+            className="mt-2 py-2 dark:bg-blue-600"
             type="submit"
           >
-            Create your shelf
+            {isSubmitting ? "Submitting" : "Create your shelf"}
           </Button>
         </form>
       </div>
