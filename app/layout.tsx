@@ -20,12 +20,12 @@ export default function RootLayout({
         <header className="flex flex-col items-center justify-between gap-4 bg-lego-yellow px-10 py-6 sm:flex-row sm:gap-0">
           <Link
             href="/"
-            className="w-fit cursor-pointer rounded border-4 border-white px-4 py-2 text-4xl font-bold text-lego-red outline outline-black"
+            className="w-fit cursor-pointer rounded border-4 border-white px-4 py-2 outline outline-4 outline-black"
           >
-            LEGOshelf
+            <img src="/images/logo.png" alt="lego-shelf logo"></img>
           </Link>
           <Link href="/your-shelf">
-            <Button>Your shelf</Button>
+            <Button>Log shelf</Button>
           </Link>
         </header>
         {children}
