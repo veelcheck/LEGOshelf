@@ -1,7 +1,6 @@
 // Merges class names coming from different places without conflict.
 import { twMerge } from "tailwind-merge";
-
-type ButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement>;
+import { ButtonProps } from "@/lib/types";
 
 export default function Button({ className, children }: ButtonProps) {
   return (

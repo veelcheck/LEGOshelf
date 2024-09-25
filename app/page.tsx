@@ -9,7 +9,7 @@ export default function Home() {
         Feel free to log to your shelf or search the Brickpit. Whatever you do,
         have fun!
       </p>
-      <div className="h-64 bg-hero-pattern bg-cover bg-center md:h-[600px]">
+      <div className="bg-hero-pattern bg-cover bg-center">
         <Search />
       </div>
     </main>
