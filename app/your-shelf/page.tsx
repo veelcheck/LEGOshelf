@@ -26,7 +26,7 @@ export default function YourShelf() {
   };
 
   return (
-    <main className="my-auto py-6">
+    <div className="pb-2">
       <h1 className="pb-6 text-center text-xl md:text-3xl">
         Log to/create your shelf
       </h1>
@@ -103,6 +103,6 @@ export default function YourShelf() {
           </Button>
         </form>
       </div>
-    </main>
+    </div>
   );
 }

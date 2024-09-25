@@ -1,3 +1,4 @@
+import Link from "next/link";
 import Button from "./Button";
 
 export default function Search() {
@@ -5,8 +6,9 @@ export default function Search() {
   const handleInput = (e: React.ChangeEvent<HTMLInputElement>) => {
     e.target.value = e.target.value.replace(/[^0-9]/g, ""); // Only allow numbers
   };
+  console.log("can you see me?");
   return (
-    <form className="flex h-64 flex-col items-center justify-center gap-2 px-2 sm:flex-row md:h-[600px] md:text-3xl">
+    <form className="flex h-72 flex-col items-center justify-center gap-2 px-2 sm:flex-row md:h-[600px] md:py-16 md:text-3xl">
       <label
         htmlFor="lego-search"
         className="rounded-md bg-lego-yellow bg-opacity-80 p-4 font-semibold text-black"
@@ -25,7 +27,11 @@ export default function Search() {
         onInput={handleInput}
       />
 
-      <Button className="bg-lego-red text-base md:text-3xl">Search</Button>
+      <Link href="/lego-set">
+        <Button className="str self-auto bg-lego-red text-base md:text-3xl">
+          Search
+        </Button>
+      </Link>
     </form>
   );
 }

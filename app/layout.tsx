@@ -28,7 +28,9 @@ export default function RootLayout({
             <Button>Log shelf</Button>
           </Link>
         </header>
-        {children}
+        <main className="space-y-2 pt-8 text-center sm:space-y-10">
+          {children}
+        </main>
         <footer className="mt-auto flex flex-col items-center justify-end gap-2 border-t-2 border-lego-red py-2 text-xs sm:flex-row">
           <a
             href="https://agnieszka-wilczek.netlify.app"

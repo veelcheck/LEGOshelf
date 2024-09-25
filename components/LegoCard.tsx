@@ -28,15 +28,42 @@ export default async function LegoCard() {
     const data: TLegoSet = await response.json();
 
     return (
-      <ol className="bg-white bg-opacity-80 px-2 md:mx-10 md:rounded-md md:px-0">
-        <li>Set number: {data.set_num}</li>
-        <li>Name: {data.name}</li>
-        <li>Year: {data.year}</li>
-        <li>Number of Parts: {data.num_parts}</li>
-        <li>
-          <img src={data.set_img_url} className="min-w-64 max-w-2xl" />
-        </li>
-      </ol>
+      <>
+        <table className="mx-auto">
+          <tr className="flex">
+            <td className="w-28 border-r text-right">Set number: </td>
+            <td className="w-32 text-left">{data.set_num}</td>
+          </tr>
+          <tr className="flex">
+            <td className="w-28 border-r text-right">Name: </td>
+            <td className="w-32 text-right">{data.name}</td>
+          </tr>
+          <tr className="flex">
+            <td className="w-20 text-right">Year: </td>
+            <td className="w-32 text-right">{data.year}</td>
+          </tr>
+          <tr className="flex">
+            <td className="w-28 text-right">Number of Parts: </td>
+            <td className="w-32 text-right">{data.num_parts}</td>
+          </tr>
+        </table>
+        <ol className="border px-2">
+          <li className="flex justify-center border">
+            <div className="w-32">Set number: </div>
+            <div className="w-32">{data.set_num}</div>
+          </li>
+          <li>Name: {data.name}</li>
+          <li>Year: {data.year}</li>
+          <li>Number of Parts: {data.num_parts}</li>
+          <li>
+            <img
+              src={data.set_img_url}
+              alt={`Image of ${data.name}`}
+              className="h-auto w-full max-w-2xl"
+            />
+          </li>
+        </ol>
+      </>
     );
   } catch (error) {
     // Check if error is an instance of the Error object
