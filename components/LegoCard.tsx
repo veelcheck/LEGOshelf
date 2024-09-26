@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 type TLegoSet = {
   set_num: string;
   name: string;
@@ -28,42 +30,45 @@ export default async function LegoCard() {
     const data: TLegoSet = await response.json();
 
     return (
-      <>
-        <table className="mx-auto">
-          <tr className="flex">
-            <td className="w-28 border-r text-right">Set number: </td>
-            <td className="w-32 text-left">{data.set_num}</td>
-          </tr>
-          <tr className="flex">
-            <td className="w-28 border-r text-right">Name: </td>
-            <td className="w-32 text-right">{data.name}</td>
-          </tr>
-          <tr className="flex">
-            <td className="w-20 text-right">Year: </td>
-            <td className="w-32 text-right">{data.year}</td>
-          </tr>
-          <tr className="flex">
-            <td className="w-28 text-right">Number of Parts: </td>
-            <td className="w-32 text-right">{data.num_parts}</td>
-          </tr>
+      <div className="flex flex-col items-center gap-y-4 py-16 md:flex-row md:justify-center">
+        <Image
+          src={data.set_img_url}
+          alt={`Image of ${data.name}`}
+          className="h-auto md:w-[500px]"
+          sizes="(max-width: 768px) 100vw, 500px"
+          width="300"
+          height="300"
+          priority={true}
+        />
+        <table className="mx-auto md:mx-0">
+          <tbody>
+            <tr className="flex md:text-xl">
+              <td className="w-28 pr-2 text-right font-semibold md:w-36">
+                Set number:
+              </td>
+              <td className="w-36 pl-2 text-left md:w-72">{data.set_num}</td>
+            </tr>
+            <tr className="flex md:text-xl">
+              <td className="w-28 pr-2 text-right font-semibold md:w-36">
+                Name:
+              </td>
+              <td className="w-36 pl-2 text-left md:w-72">{data.name}</td>
+            </tr>
+            <tr className="flex md:text-xl">
+              <td className="w-28 pr-2 text-right font-semibold md:w-36">
+                Year:{" "}
+              </td>
+              <td className="w-36 pl-2 text-left md:w-72">{data.year}</td>
+            </tr>
+            <tr className="flex md:text-xl">
+              <td className="w-28 pr-2 text-right font-semibold md:w-36">
+                Parts:{" "}
+              </td>
+              <td className="w-36 pl-2 text-left md:w-72">{data.num_parts}</td>
+            </tr>
+          </tbody>
         </table>
-        <ol className="border px-2">
-          <li className="flex justify-center border">
-            <div className="w-32">Set number: </div>
-            <div className="w-32">{data.set_num}</div>
-          </li>
-          <li>Name: {data.name}</li>
-          <li>Year: {data.year}</li>
-          <li>Number of Parts: {data.num_parts}</li>
-          <li>
-            <img
-              src={data.set_img_url}
-              alt={`Image of ${data.name}`}
-              className="h-auto w-full max-w-2xl"
-            />
-          </li>
-        </ol>
-      </>
+      </div>
     );
   } catch (error) {
     // Check if error is an instance of the Error object

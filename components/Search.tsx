@@ -8,7 +8,7 @@ export default function Search() {
   };
   console.log("can you see me?");
   return (
-    <form className="flex h-72 flex-col items-center justify-center gap-2 px-2 sm:flex-row md:h-[600px] md:py-16 md:text-3xl">
+    <form className="flex h-72 flex-col items-center justify-center gap-2 px-2 sm:flex-row md:h-[600px] md:py-2 md:text-3xl">
       <label
         htmlFor="lego-search"
         className="rounded-md bg-lego-yellow bg-opacity-80 p-4 font-semibold text-black"

@@ -16,11 +16,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className="container mx-auto flex min-h-screen flex-col font-mono antialiased sm:justify-between">
+      <body className="container mx-auto flex min-h-screen flex-col justify-between font-mono antialiased">
         <header className="flex flex-col items-center justify-between gap-4 bg-lego-yellow px-10 py-6 sm:flex-row sm:gap-0">
           <Link
             href="/"
-            className="w-fit cursor-pointer rounded border-4 border-white px-4 py-2 outline outline-4 outline-black"
+            className="w-fit cursor-pointer rounded border-4 border-black px-4 py-2"
           >
             <img src="/images/logo.png" alt="lego-shelf logo"></img>
           </Link>
@@ -31,15 +31,17 @@ export default function RootLayout({
         <main className="space-y-2 pt-8 text-center sm:space-y-10">
           {children}
         </main>
-        <footer className="mt-auto flex flex-col items-center justify-end gap-2 border-t-2 border-lego-red py-2 text-xs sm:flex-row">
-          <a
-            href="https://agnieszka-wilczek.netlify.app"
-            target="_blank"
-            className="md:mr-2 md:rounded-md md:bg-lego-red md:p-2 md:text-white"
-          >
-            &#169; Veelcheck 2024
-          </a>
-          <p>I made this and it&apos;s my precious.</p>
+        <footer>
+          <small className="mt-auto flex flex-col items-center justify-end gap-2 border-t-2 border-lego-red py-2 sm:flex-row">
+            <a
+              href="https://agnieszka-wilczek.netlify.app"
+              target="_blank"
+              className="md:mr-2 md:rounded-md md:bg-lego-red md:p-2 md:text-white"
+            >
+              &#169; Veelcheck 2024
+            </a>
+            <p>I made this and it&apos;s my precious.</p>
+          </small>
         </footer>
       </body>
     </html>
