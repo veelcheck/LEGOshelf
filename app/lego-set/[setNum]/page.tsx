@@ -1,13 +1,5 @@
 import Image from "next/image";
-
-type TLegoSet = {
-  set_num: string;
-  name: string;
-  year: string;
-  num_parts: number;
-  //theme_id: number;
-  set_img_url: string;
-};
+import { TLegoSet } from "@/lib/types";
 
 export default async function LegoCard() {
   try {
@@ -35,7 +27,6 @@ export default async function LegoCard() {
           src={data.set_img_url}
           alt={`Image of ${data.name}`}
           className="h-auto md:w-[500px]"
-          sizes="(max-width: 768px) 100vw, 500px"
           width="300"
           height="300"
           priority={true}

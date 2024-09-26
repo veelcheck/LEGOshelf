@@ -4,6 +4,16 @@ export type ButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement>;
 
 export type TSignUpSchema = z.infer<typeof signUpSchema>;
 
+export type TsearchSchema = z.infer<typeof searchSchema>;
+
+export type TLegoSet = {
+  set_num: string;
+  name: string;
+  year: string;
+  num_parts: number;
+  set_img_url: string;
+};
+
 export const signUpSchema = z
   .object({
     name: z.string(),
@@ -20,3 +30,7 @@ export const signUpSchema = z
     message: "Passwords must match",
     path: ["confirmPassword"],
   });
+
+export const searchSchema = z.object({
+  searchNum: z.string().regex(/^\d+$/).max(7, "No more than 7 digits"),
+});
