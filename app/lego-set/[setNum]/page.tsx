@@ -27,8 +27,8 @@ export default async function LegoCard() {
           src={data.set_img_url}
           alt={`Set ${data.name}`}
           className="h-auto md:w-[500px]"
-          width="300"
-          height="300"
+          width="389"
+          height="292"
           priority={true}
         />
         <table className="mx-auto md:mx-0">

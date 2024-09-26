@@ -47,7 +47,7 @@ export default function Search() {
       {errors.searchNum && (
         <p className="text-lego-red">{`${errors.searchNum.message}`}</p>
       )}
-      <Link href={"lego-set/1"}>
+      <Link href="/lego-set/1">
         <Button
           type="submit"
           className="h-14 border border-lego-yellow bg-lego-red text-2xl"

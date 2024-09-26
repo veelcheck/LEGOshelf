@@ -5,6 +5,7 @@ const nextConfig = {
       {
         protocol: "https",
         hostname: "cdn.rebrickable.com",
+        pathname: "/**", // Optional: Allows any path under the hostname
       },
     ],
   },
