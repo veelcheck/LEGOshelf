@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import Button from "@/components/Button";
 import Link from "next/link";
+import Image from "next/image";
 
 export const metadata: Metadata = {
   title: "Lego Shelf",
@@ -22,7 +23,13 @@ export default function RootLayout({
             href="/"
             className="w-fit cursor-pointer rounded border-4 border-black px-4 py-2"
           >
-            <img src="/images/logo.png" alt="lego-shelf logo"></img>
+            <Image
+              src="/images/logo.png"
+              alt="lego-shelf logo"
+              height={24}
+              width={150}
+              priority={true}
+            ></Image>
           </Link>
           <Link href="/your-shelf">
             <Button>Log shelf</Button>

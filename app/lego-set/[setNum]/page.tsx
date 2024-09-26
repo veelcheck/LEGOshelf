@@ -25,7 +25,7 @@ export default async function LegoCard() {
       <div className="flex flex-col items-center gap-y-4 py-16 md:flex-row md:justify-center">
         <Image
           src={data.set_img_url}
-          alt={`Image of ${data.name}`}
+          alt={`Set ${data.name}`}
           className="h-auto md:w-[500px]"
           width="300"
           height="300"

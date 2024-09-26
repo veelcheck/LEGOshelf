@@ -20,6 +20,7 @@ export default function Search() {
 
   const onSubmit = async (data: TsearchSchema) => {
     // ...
+    console.log(data);
   };
 
   return (
