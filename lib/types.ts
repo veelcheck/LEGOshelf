@@ -4,7 +4,7 @@ export type ButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement>;
 
 export type TSignUpSchema = z.infer<typeof signUpSchema>;
 
-export type TsearchSchema = z.infer<typeof searchSchema>;
+export type TSearchSchema = z.infer<typeof searchSchema>;
 
 export type TLegoSet = {
   set_num: string;
@@ -32,5 +32,5 @@ export const signUpSchema = z
   });
 
 export const searchSchema = z.object({
-  searchNum: z.string().regex(/^\d+$/).max(7, "No more than 7 digits"),
+  searchNum: z.string().max(7, "No more than 7 digits").trim(),
 });

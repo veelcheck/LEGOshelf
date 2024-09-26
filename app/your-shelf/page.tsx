@@ -62,7 +62,7 @@ export default function YourShelf() {
           <input
             {...register("name")}
             className="rounded border px-4 py-2"
-            typeof="text"
+            type="text"
           ></input>
           {errors.name && (
             <p className="text-lego-red">{`${errors.name.message}`}</p>
@@ -71,7 +71,7 @@ export default function YourShelf() {
           <input
             {...register("email")}
             className="rounded border px-4 py-2"
-            typeof="email"
+            type="email"
           ></input>
           {errors.email && (
             <p className="text-lego-red">{`${errors.email.message}`}</p>

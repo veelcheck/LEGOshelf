@@ -4,6 +4,7 @@ import Button from "@/components/Button";
 import Link from "next/link";
 import Image from "next/image";
 import logo from "../public/images/logo.png";
+import { SearchProvider } from "@/context/SearchContex";
 
 export const metadata: Metadata = {
   title: "Lego Shelf",
@@ -30,9 +31,11 @@ export default function RootLayout({
             <Button>Log shelf</Button>
           </Link>
         </header>
-        <main className="space-y-2 pt-8 text-center sm:space-y-10">
-          {children}
-        </main>
+        <SearchProvider>
+          <main className="space-y-2 pt-8 text-center sm:space-y-10">
+            {children}
+          </main>
+        </SearchProvider>
         <footer>
           <small className="mt-auto flex flex-col items-center justify-end gap-2 border-t-2 border-lego-red py-2 sm:flex-row">
             <a
