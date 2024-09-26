@@ -34,28 +34,28 @@ export default async function LegoCard() {
         <table className="mx-auto md:mx-0">
           <tbody>
             <tr className="flex md:text-xl">
-              <td className="w-28 pr-2 text-right font-semibold md:w-36">
+              <td className="w-28 pr-2 text-right font-semibold sm:w-36">
                 Set number:
               </td>
-              <td className="w-36 pl-2 text-left md:w-72">{data.set_num}</td>
+              <td className="w-36 pl-2 text-left sm:w-36">{data.set_num}</td>
             </tr>
             <tr className="flex md:text-xl">
               <td className="w-28 pr-2 text-right font-semibold md:w-36">
                 Name:
               </td>
-              <td className="w-36 pl-2 text-left md:w-72">{data.name}</td>
+              <td className="w-36 pl-2 text-left sm:w-36">{data.name}</td>
             </tr>
             <tr className="flex md:text-xl">
               <td className="w-28 pr-2 text-right font-semibold md:w-36">
                 Year:{" "}
               </td>
-              <td className="w-36 pl-2 text-left md:w-72">{data.year}</td>
+              <td className="w-36 pl-2 text-left sm:w-36">{data.year}</td>
             </tr>
             <tr className="flex md:text-xl">
               <td className="w-28 pr-2 text-right font-semibold md:w-36">
                 Parts:{" "}
               </td>
-              <td className="w-36 pl-2 text-left md:w-72">{data.num_parts}</td>
+              <td className="w-36 pl-2 text-left sm:w-36">{data.num_parts}</td>
             </tr>
           </tbody>
         </table>
