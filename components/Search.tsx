@@ -6,7 +6,7 @@ import { useSearchContext } from "@/context/SearchContex";
 import { useRouter } from "next/navigation";
 
 export default function Search() {
-  const { searchNum, setSearchNum } = useSearchContext();
+  const { setSearchNum } = useSearchContext();
   const router = useRouter();
 
   const {
@@ -25,7 +25,6 @@ export default function Search() {
   const onSubmit = (data: TSearchSchema) => {
     setSearchNum(data.searchNum);
     router.push(`/lego-set/${data.searchNum}`);
-    // console.log("Search submitted:", searchNum);
   };
 
   return (
