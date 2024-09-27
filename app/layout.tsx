@@ -19,7 +19,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className="container mx-auto flex min-h-screen flex-col justify-between font-mono antialiased">
+      <body className="container mx-auto flex min-h-screen flex-col font-mono antialiased">
         <header className="flex flex-col items-center justify-between gap-4 bg-lego-yellow px-10 py-6 sm:flex-row sm:gap-0">
           <Link
             href="/"
@@ -32,7 +32,7 @@ export default function RootLayout({
           </Link>
         </header>
         <SearchProvider>
-          <main className="space-y-2 pt-8 text-center sm:space-y-10">
+          <main className="space-y-2 text-center sm:space-y-10">
             {children}
           </main>
         </SearchProvider>
@@ -43,7 +43,7 @@ export default function RootLayout({
               target="_blank"
               className="md:mr-2 md:rounded-md md:bg-lego-red md:p-2 md:text-white"
             >
-              &#169; Veelcheck 2024
+              &copy; Veelcheck 2024
             </a>
             <p>I made this and it&apos;s my precious.</p>
           </small>

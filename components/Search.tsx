@@ -32,7 +32,7 @@ export default function Search() {
     <>
       <form
         onSubmit={handleSubmit(onSubmit)}
-        className="flex h-72 flex-col items-center justify-center gap-2 px-2 sm:flex-row md:h-[600px] md:py-2"
+        className="flex h-fit flex-col items-center justify-center gap-2 px-2 sm:flex-row md:py-10"
       >
         <label htmlFor="lego-search" className="sr-only">
           Search by set number:
