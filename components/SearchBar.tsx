@@ -5,7 +5,7 @@ import { useForm } from "react-hook-form";
 import { useSearchContext } from "@/context/SearchContex";
 import { useRouter } from "next/navigation";
 
-export default function Search() {
+export default function SearchBar() {
   const { setSearchNum } = useSearchContext();
   const router = useRouter();
 

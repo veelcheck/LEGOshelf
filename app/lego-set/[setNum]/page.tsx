@@ -3,7 +3,7 @@ import Image from "next/image";
 import { TLegoSet } from "@/lib/types";
 import { fetchLegoSet } from "@/lib/actions";
 import { useEffect, useState } from "react";
-import Search from "@/components/Search";
+import SearchBar from "@/components/SearchBar";
 
 export default function LegoCard({ params }: { params: { setNum: string } }) {
   const { setNum } = params;
@@ -40,37 +40,41 @@ export default function LegoCard({ params }: { params: { setNum: string } }) {
   return (
     <>
       <div className="bg-black py-4 md:py-0">
-        <Search />
+        <SearchBar />
       </div>
-      <div className="flex flex-col items-center gap-y-8 py-16 md:flex-row md:justify-center">
-        <Image
-          src={data.set_img_url}
-          alt={`Set ${data.name}`}
-          className="h-auto md:w-[500px]"
-          width={389}
-          height={292}
-          priority={true}
-        />
-        <table className="mx-auto md:mx-0">
-          <tbody>
-            <tr className="flex md:text-xl">
-              <td className="w-32 pr-2 text-right font-semibold">No:</td>
-              <td className="w-36 pl-2 text-left md:w-96">{data.set_num}</td>
-            </tr>
-            <tr className="flex md:text-xl">
-              <td className="w-32 pr-2 text-right font-semibold">Name:</td>
-              <td className="w-36 pl-2 text-left md:w-96">{data.name}</td>
-            </tr>
-            <tr className="flex md:text-xl">
-              <td className="w-32 pr-2 text-right font-semibold">Year:</td>
-              <td className="w-36 pl-2 text-left md:w-96">{data.year}</td>
-            </tr>
-            <tr className="flex md:text-xl">
-              <td className="w-32 pr-2 text-right font-semibold">Parts:</td>
-              <td className="w-36 pl-2 text-left md:w-96">{data.num_parts}</td>
-            </tr>
-          </tbody>
-        </table>
+      <div className="min-h-screen">
+        <div className="flex flex-col items-center gap-y-8 py-16 md:flex-row md:justify-center">
+          <div className="w-max-[700px] md:px-4">
+            <Image
+              src={data.set_img_url}
+              alt={`Set ${data.name}`}
+              className="h-auto md:w-auto"
+              width={389}
+              height={292}
+              priority={true}
+            />
+          </div>
+          <table className="mx-auto md:mx-0">
+            <tbody>
+              <tr className="flex md:text-xl">
+                <td className="w-20 pr-2 text-right font-semibold">No:</td>
+                <td className="md:w-max-96 pl-2 text-left">{data.set_num}</td>
+              </tr>
+              <tr className="flex md:text-xl">
+                <td className="w-20 pr-2 text-right font-semibold">Name:</td>
+                <td className="md:w-max-96 pl-2 text-left">{data.name}</td>
+              </tr>
+              <tr className="flex md:text-xl">
+                <td className="w-20 pr-2 text-right font-semibold">Year:</td>
+                <td className="md:w-max-96 pl-2 text-left">{data.year}</td>
+              </tr>
+              <tr className="flex md:text-xl">
+                <td className="w-20 pr-2 text-right font-semibold">Parts:</td>
+                <td className="md:w-max-96 pl-2 text-left">{data.num_parts}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
       </div>
     </>
   );

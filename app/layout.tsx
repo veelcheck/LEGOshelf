@@ -32,12 +32,10 @@ export default function RootLayout({
           </Link>
         </header>
         <SearchProvider>
-          <main className="space-y-2 text-center sm:space-y-10">
-            {children}
-          </main>
+          <main className="bg-zinc-50 text-center">{children}</main>
         </SearchProvider>
         <footer>
-          <small className="mt-auto flex flex-col items-center justify-end gap-2 border-t-2 border-lego-red py-2 sm:flex-row">
+          <small className="mt-auto flex flex-col items-center justify-end gap-2 border-t-2 border-lego-red bg-zinc-50 px-2 sm:flex-row">
             <a
               href="https://agnieszka-wilczek.netlify.app"
               target="_blank"

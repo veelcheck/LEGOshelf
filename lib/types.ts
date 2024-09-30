@@ -32,5 +32,9 @@ export const signUpSchema = z
   });
 
 export const searchSchema = z.object({
-  searchNum: z.string().max(7, "No more than 7 digits").trim(),
+  searchNum: z
+    .string()
+    .min(4, "Try at least 4 digits")
+    .max(7, "No more than 7 digits")
+    .trim(),
 });

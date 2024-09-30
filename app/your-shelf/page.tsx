@@ -26,14 +26,14 @@ export default function YourShelf() {
   };
 
   return (
-    <div className="pb-2">
-      <h1 className="pb-6 text-center text-xl md:text-3xl">
+    <div className="min-h-screen pb-8">
+      <h1 className="pb-6 pt-8 text-center text-xl md:text-3xl">
         Log to/create your shelf
       </h1>
       <div className="flex flex-col items-center justify-center md:flex-row md:items-stretch">
         <form
           // onSubmit={handleSubmit(onSubmit)}
-          className="mb-4 flex flex-col md:mb-0 md:border-r md:border-lego-red md:pr-4"
+          className="mb-4 flex flex-col border-b-2 border-b-lego-red pb-8 md:mb-0 md:border-b-0 md:border-r md:border-lego-red md:pb-0 md:pr-4"
         >
           <label className="pl-2">email</label>
           <input
