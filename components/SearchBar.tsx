@@ -37,16 +37,23 @@ export default function SearchBar() {
           Search by set number:
         </label>
         {errors.searchNum && (
-          <p className="flex h-14 items-center justify-center rounded-md border border-lego-yellow bg-white px-4 text-lego-red">{`${errors.searchNum.message}`}</p>
+          <p
+            id="inputError"
+            aria-live="assertive"
+            className="flex h-14 items-center justify-center rounded-md border border-lego-yellow bg-white px-4 text-lego-red"
+          >{`${errors.searchNum.message}`}</p>
         )}
         <input
           {...register("searchNum")}
           type="text"
           id="lego-search"
+          aria-describedby="inputError"
+          aria-invalid={!!errors.searchNum}
           placeholder="Search by set number"
           className="h-14 w-72 rounded-md p-4"
           title="Please enter up to 7 digits"
           onInput={handleInput}
+          autoFocus
         />
 
         <Button
