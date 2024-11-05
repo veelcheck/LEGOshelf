@@ -43,7 +43,7 @@ export default function LegoCard({ params }: { params: { setNum: string } }) {
         <SearchBar />
       </div>
       <div className="min-h-screen">
-        <div className="flex flex-col items-center gap-y-8 py-16 md:flex-row md:justify-center">
+        <div className="flex flex-col items-center gap-y-8 py-16">
           <div className="w-max-[700px] md:px-4">
             <Image
               src={data.set_img_url}

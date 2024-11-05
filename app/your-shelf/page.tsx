@@ -26,7 +26,7 @@ export default function YourShelf() {
   };
 
   return (
-    <div className="min-h-screen pb-8">
+    <div className="min-h-screen pb-8 md:flex md:flex-col md:justify-center md:border">
       <h1 className="pb-6 pt-8 text-center text-xl md:text-3xl">
         Log to/create your shelf
       </h1>
