@@ -46,6 +46,7 @@ export default function SearchBar() {
         <input
           {...register("searchNum")}
           type="text"
+          inputMode="numeric"
           id="lego-search"
           aria-describedby="inputError"
           aria-invalid={!!errors.searchNum}
