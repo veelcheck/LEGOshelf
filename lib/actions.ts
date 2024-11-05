@@ -10,7 +10,7 @@ export const fetchLegoSet = async (setNum: string): Promise<TLegoSet> => {
         Authorization: `key ${process.env.REBRICKABLE_API_KEY}`,
       },
       cache: "no-store", // Ensures data is fetched on each request (not cached)
-    },
+    }
   );
 
   if (!response.ok) {

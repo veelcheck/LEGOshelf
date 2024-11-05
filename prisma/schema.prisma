@@ -1,0 +1,29 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id       Int    @id @default(autoincrement())
+  email    String @unique
+  password String
+  name     String
+}
+
+model Shelf {
+  id    Int    @unique
+  name  String
+  year  Int
+  parts Int
+}
+
+model Whishlist {
+  id    Int    @unique
+  name  String
+  year  Int
+  parts Int
+}
