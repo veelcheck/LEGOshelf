@@ -8,22 +8,36 @@ datasource db {
 }
 
 model User {
-  id       Int    @id @default(autoincrement())
-  email    String @unique
-  password String
-  name     String
+  id          Int        @id @default(autoincrement())
+  email       String     @unique
+  password    String
+  name        String
+  legoShelf   LegoShelf? @relation(fields: [legoShelfId], references: [id])
+  wishList    Wishlist?  @relation(fields: [wishlistId], references: [id])
+  legoShelfId Int?       @unique // Ensuring one-to-one relationship
+  wishlistId  Int?       @unique // Ensuring one-to-one relationship
 }
 
-model Shelf {
-  id    Int    @unique
-  name  String
-  year  Int
-  parts Int
+model LegoSet {
+  id        Int        @id
+  imagePath String
+  name      String
+  year      Int
+  parts     Int
+  wishlist  Wishlist[]
 }
 
-model Whishlist {
-  id    Int    @unique
-  name  String
-  year  Int
-  parts Int
+model LegoShelf {
+  id         Int   @id @default(autoincrement())
+  userId     Int
+  totalParts Int
+  User       User?
+}
+
+model Wishlist {
+  id        Int     @id @default(autoincrement())
+  userId    Int // Reference to the user who owns the wishlist
+  legoSetId Int // Reference to the Lego set in the wishlist
+  legoSet   LegoSet @relation(fields: [legoSetId], references: [id]) // Relation to LegoSet
+  User      User?
 }
