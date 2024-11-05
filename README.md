@@ -1,5 +1,5 @@
-# LEGOshelf
-**LEGOshelf** is a project built with Next.js, designed to help LEGO enthusiasts (my six-and-a-half-years-old son) manage their LEGO collections easily. Inspired by the goal of creating a fun and simple platform for a young audience, this application allows users to look up LEGO sets and will eventually enable them to build a personalized digital LEGO library. [See site deployed on Netlify.](https://legoshelf.netlify.app/)
+# LEGO SHELF
+**Lego Shelf** is a project built with Next.js, designed to help LEGO enthusiasts (my six-and-a-half-years-old son) manage their LEGO collections easily. Inspired by the goal of creating a fun and simple platform for a young audience, this application allows users to look up LEGO sets and will eventually enable them to build a personalized digital LEGO library. [See site deployed on Netlify.](https://legoshelf.netlify.app/)
 
 ## Project Status 🚧
 **Currently in Development**  
