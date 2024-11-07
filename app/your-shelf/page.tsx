@@ -3,8 +3,11 @@ import Button from "@/components/Button";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { signUpSchema, TSignUpSchema } from "@/lib/types";
+import { useRouter } from "next/navigation";
 
 export default function YourShelf() {
+  const router = useRouter();
+
   const {
     register,
     handleSubmit,
@@ -17,8 +20,21 @@ export default function YourShelf() {
   const onSubmit = async (data: TSignUpSchema) => {
     try {
       // Simulate form submission
-      console.log(data);
-      await new Promise((resolve) => setTimeout(resolve, 1000));
+      // console.log(data);
+      // await new Promise((resolve) => setTimeout(resolve, 1000));
+      const response = await fetch("api/users", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      });
+
+      if (!response.ok) {
+        throw new Error("Failed to create account");
+      }
+      const newUser = await response.json();
+      router.push(`/your-shelf/${newUser.id}`);
       reset();
     } catch (error) {
       console.error("Form submission: ", error);
