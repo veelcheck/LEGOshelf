@@ -1,3 +1,4 @@
+"use client";
 import Button from "@/components/Button";
 import { searchSchema, TSearchSchema } from "@/lib/types";
 import { zodResolver } from "@hookform/resolvers/zod";

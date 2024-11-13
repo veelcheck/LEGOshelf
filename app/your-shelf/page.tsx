@@ -2,26 +2,37 @@
 import Button from "@/components/Button";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
-import { signUpSchema, TSignUpSchema } from "@/lib/types";
+import {
+  signUpSchema,
+  TSignUpSchema,
+  signInSchema,
+  TSignInSchema,
+} from "@/lib/types";
 import { useRouter } from "next/navigation";
 
 export default function YourShelf() {
   const router = useRouter();
 
   const {
-    register,
-    handleSubmit,
-    formState: { errors, isSubmitting },
-    reset,
+    register: registerSignUp,
+    handleSubmit: handleSignUpSubmit,
+    formState: { errors: signUpErrors, isSubmitting: isSignUpSubmitting },
+    reset: resetSignUp,
   } = useForm<TSignUpSchema>({
     resolver: zodResolver(signUpSchema),
   });
 
-  const onSubmit = async (data: TSignUpSchema) => {
+  const {
+    register: registerSignIn,
+    handleSubmit: handleSignInSubmit,
+    formState: { errors: signInErrors, isSubmitting: isSignInSubmitting },
+    reset: resetSignIn,
+  } = useForm<TSignInSchema>({
+    resolver: zodResolver(signInSchema),
+  });
+
+  const onSubmitSignUp = async (data: TSignUpSchema) => {
     try {
-      // Simulate form submission
-      // console.log(data);
-      // await new Promise((resolve) => setTimeout(resolve, 1000));
       const response = await fetch("api/users", {
         method: "POST",
         headers: {
@@ -35,7 +46,28 @@ export default function YourShelf() {
       }
       const newUser = await response.json();
       router.push(`/your-shelf/${newUser.id}`);
-      reset();
+      resetSignUp();
+    } catch (error) {
+      console.error("Form submission: ", error);
+    }
+  };
+
+  const onSubmitSignIn = async (data: TSignInSchema) => {
+    try {
+      const response = await fetch("api/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      });
+
+      if (!response.ok) {
+        throw new Error("Failed to get user");
+      }
+      const newUser = await response.json();
+      router.push(`/your-shelf/${newUser.id}`);
+      resetSignIn();
     } catch (error) {
       console.error("Form submission: ", error);
     }
@@ -48,74 +80,82 @@ export default function YourShelf() {
       </h1>
       <div className="flex flex-col items-center justify-center md:flex-row md:items-stretch">
         <form
-          // onSubmit={handleSubmit(onSubmit)}
+          onSubmit={handleSignInSubmit(onSubmitSignIn)}
           className="mb-4 flex flex-col border-b-2 border-b-lego-red pb-8 md:mb-0 md:border-b-0 md:border-r md:border-lego-red md:pb-0 md:pr-4"
         >
           <label className="pl-2">email</label>
           <input
-            // {...register("loggingEmail")}
+            {...registerSignIn("email")}
             className="rounded border px-4 py-2"
+            type="email"
           ></input>
+          {signInErrors.email && (
+            <p className="text-lego-red">{signInErrors.email.message}</p>
+          )}
           <label className="pl-2">password</label>
           <input
-            // {...register("loggingPassword")}
+            {...registerSignIn("password")}
             className="mb-2 rounded border px-4 py-2"
+            type="password"
           ></input>
+          {signInErrors.password && (
+            <p className="text-lego-red">{signInErrors.password.message}</p>
+          )}
           <Button
             className="mt-auto bg-lego-red"
             type="submit"
-            // disabled={isSubmitting}
+            disabled={isSignInSubmitting}
           >
-            Log to your shelf
+            {isSignInSubmitting ? "Logging in..." : "Log to your shelf"}
           </Button>
         </form>
 
         <form
-          onSubmit={handleSubmit(onSubmit)}
+          onSubmit={handleSignUpSubmit(onSubmitSignUp)}
           className="flex flex-col md:border-l md:border-lego-red md:pl-4"
         >
           <label className="pl-2">name</label>
           <input
-            {...register("name")}
+            {...registerSignUp("name")}
             className="rounded border px-4 py-2"
             type="text"
           ></input>
-          {errors.name && (
-            <p className="text-lego-red">{`${errors.name.message}`}</p>
+          {signUpErrors.name && (
+            <p className="text-lego-red">{`${signUpErrors.name.message}`}</p>
           )}
           <label className="pl-2">email</label>
           <input
-            {...register("email")}
+            {...registerSignUp("email")}
             className="rounded border px-4 py-2"
             type="email"
           ></input>
-          {errors.email && (
-            <p className="text-lego-red">{`${errors.email.message}`}</p>
+          {signUpErrors.email && (
+            <p className="text-lego-red">{`${signUpErrors.email.message}`}</p>
           )}
           <label className="pl-2">password</label>
           <input
-            {...register("password")}
+            {...registerSignUp("password")}
             className="rounded border px-4 py-2"
             type="password"
           ></input>
-          {errors.password && (
-            <p className="text-lego-red">{`${errors.password.message}`}</p>
+          {signUpErrors.password && (
+            <p className="text-lego-red">{`${signUpErrors.password.message}`}</p>
           )}
           <label className="pl-2">confirm password</label>
           <input
-            {...register("confirmPassword")}
+            {...registerSignUp("confirmPassword")}
             className="rounded border px-4 py-2"
             type="password"
           ></input>
-          {errors.confirmPassword && (
-            <p className="text-lego-red">{`${errors.confirmPassword.message}`}</p>
+          {signUpErrors.confirmPassword && (
+            <p className="text-lego-red">{`${signUpErrors.confirmPassword.message}`}</p>
           )}
           <Button
-            disabled={isSubmitting}
+            disabled={isSignUpSubmitting}
             className="mt-2 py-2 dark:bg-blue-600"
             type="submit"
           >
-            {isSubmitting ? "Submitting" : "Create your shelf"}
+            {isSignUpSubmitting ? "Submitting..." : "Create your shelf"}
           </Button>
         </form>
       </div>

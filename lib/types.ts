@@ -6,6 +6,8 @@ export type TSignUpSchema = z.infer<typeof signUpSchema>;
 
 export type TSearchSchema = z.infer<typeof searchSchema>;
 
+export type TSignInSchema = z.infer<typeof signInSchema>;
+
 export type TLegoSet = {
   set_num: string;
   name: string;
@@ -13,17 +15,24 @@ export type TLegoSet = {
   num_parts: number;
   set_img_url: string;
 };
+const emailSchema = z.string().email();
+const passwordSchema = z
+  .string()
+  .min(10, "Password must be at least 10 characters long")
+  .regex(/[A-Z]/, "Password must contain at least one uppercase letter")
+  .regex(/[0-9]/, "Password must contain at least one number")
+  .regex(/[\W_]/, "Password must contain at least one special character");
+
+export const signInSchema = z.object({
+  email: emailSchema,
+  password: passwordSchema,
+});
 
 export const signUpSchema = z
   .object({
     name: z.string(),
-    email: z.string().email(),
-    password: z
-      .string()
-      .min(10, "Password must be at least 10 characters long")
-      .regex(/[A-Z]/, "Password must contain at least one uppercase letter")
-      .regex(/[0-9]/, "Password must contain at least one number")
-      .regex(/[\W_]/, "Password must contain at least one special character"),
+    email: emailSchema,
+    password: passwordSchema,
     confirmPassword: z.string(),
   })
   .refine((data) => data.password === data.confirmPassword, {
