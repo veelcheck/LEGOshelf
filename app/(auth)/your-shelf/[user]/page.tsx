@@ -2,7 +2,7 @@ import { PrismaClient } from "@prisma/client";
 
 const db = new PrismaClient();
 
-export default async function UserPage({
+export default async function DashBoard({
   params,
 }: {
   params: { user: string };
