@@ -9,9 +9,11 @@ import {
   TSignInSchema,
 } from "@/lib/types";
 import { useRouter } from "next/navigation";
+import { useState } from "react";
 
 export default function YourShelf() {
   const router = useRouter();
+  const [signInUserError, setSignInUserError] = useState<string | null>(null);
 
   const {
     register: registerSignUp,
@@ -44,6 +46,7 @@ export default function YourShelf() {
       if (!response.ok) {
         throw new Error("Failed to create account");
       }
+
       const newUser = await response.json();
       router.push(`/your-shelf/${newUser.id}`);
       resetSignUp();
@@ -63,8 +66,10 @@ export default function YourShelf() {
       });
 
       if (!response.ok) {
+        setSignInUserError("No such user");
         throw new Error("Failed to get user");
       }
+
       const newUser = await response.json();
       router.push(`/your-shelf/${newUser.id}`);
       resetSignIn();
@@ -100,6 +105,9 @@ export default function YourShelf() {
           ></input>
           {signInErrors.password && (
             <p className="text-lego-red">{signInErrors.password.message}</p>
+          )}
+          {signInUserError && (
+            <p className="text-lego-red">{signInUserError}</p>
           )}
           <Button
             className="mt-auto bg-lego-red"

@@ -11,8 +11,5 @@ export default async function UserPage({
     where: { id: params.user },
   });
 
-  if (!user) {
-    return <p>User not found.</p>;
-  }
-  return <div className="min-h-screen pt-10">Welcome {user.name}</div>;
+  return <div className="min-h-screen pt-10">Welcome {user?.name}</div>;
 }
