@@ -16,7 +16,7 @@ export type TLegoSet = {
   set_img_url: string;
 };
 const emailSchema = z.string().email();
-const passwordSchema = z
+const passwordSignUpSchema = z
   .string()
   .min(10, "Password must be at least 10 characters long")
   .regex(/[A-Z]/, "Password must contain at least one uppercase letter")
@@ -25,14 +25,14 @@ const passwordSchema = z
 
 export const signInSchema = z.object({
   email: emailSchema,
-  password: passwordSchema,
+  password: z.string(),
 });
 
 export const signUpSchema = z
   .object({
     name: z.string(),
     email: emailSchema,
-    password: passwordSchema,
+    password: passwordSignUpSchema,
     confirmPassword: z.string(),
   })
   .refine((data) => data.password === data.confirmPassword, {

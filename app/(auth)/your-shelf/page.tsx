@@ -66,7 +66,7 @@ export default function YourShelf() {
       });
 
       if (!response.ok) {
-        setSignInUserError("No such user");
+        setSignInUserError("No user or wrong data");
         throw new Error("Failed to get user");
       }
 
