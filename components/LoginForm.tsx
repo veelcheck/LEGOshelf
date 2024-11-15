@@ -10,9 +10,11 @@ import {
 } from "@/lib/types";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
+import { useAuth } from "../context/authContext";
 
 export default function YourShelf() {
   const router = useRouter();
+  const { logIn } = useAuth();
   const [signInUserError, setSignInUserError] = useState<string | null>(null);
 
   const {
@@ -48,6 +50,7 @@ export default function YourShelf() {
       }
 
       const newUser = await response.json();
+      logIn(newUser.id);
       router.push(`/your-shelf/${newUser.id}`);
       resetSignUp();
     } catch (error) {
@@ -71,6 +74,7 @@ export default function YourShelf() {
       }
 
       const newUser = await response.json();
+      logIn(newUser.id);
       router.push(`/your-shelf/${newUser.id}`);
       resetSignIn();
     } catch (error) {

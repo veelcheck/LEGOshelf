@@ -3,6 +3,7 @@ import "./globals.css";
 import { SearchProvider } from "@/context/SearchContex";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import { AuthProvider } from "@/context/authContext";
 
 export const metadata: Metadata = {
   title: "Lego Shelf",
@@ -18,11 +19,13 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className="container mx-auto flex min-h-screen flex-col font-mono antialiased">
-        <Header />
-        <SearchProvider>
-          <main className="bg-zinc-50 text-center">{children}</main>
-        </SearchProvider>
-        <Footer />
+        <AuthProvider>
+          <Header />
+          <SearchProvider>
+            <main className="bg-zinc-50 text-center">{children}</main>
+          </SearchProvider>
+          <Footer />
+        </AuthProvider>
       </body>
     </html>
   );
