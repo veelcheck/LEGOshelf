@@ -18,11 +18,13 @@ export default function Header() {
         className="h-fit w-fit cursor-pointer rounded-md bg-lego-red"
       >
         <Image
+          className="h-24 w-52"
           src={logo}
           alt="legoshelf logo"
           priority={true}
-          height={93}
-          width={200}
+          height={96}
+          width={208}
+          title="https://www.textstudio.com Font generator"
         ></Image>
       </Link>
       {isDashboard ? (
