@@ -18,6 +18,15 @@ module.exports = {
       backgroundImage: {
         "hero-pattern": "url('/images/lego-bg.jpg')",
       },
+      animation: {
+        loading: "loading 3s linear infinite",
+      },
+      keyframes: {
+        loading: {
+          "0%, 20%, 40%, 60%, 80%, 100%": { opacity: 1 },
+          "10%, 30%, 50%, 70%, 90%": { opacity: 0 },
+        },
+      },
     },
   },
   plugins: [],

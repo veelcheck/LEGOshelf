@@ -1,7 +1,7 @@
 export default function Footer() {
   return (
-    <footer>
-      <small className="mt-auto flex flex-col items-center justify-end gap-2 border-t-2 border-lego-red bg-zinc-50 p-2 sm:flex-row">
+    <footer className="border-t-2 border-lego-red bg-zinc-50">
+      <small className="container mx-auto mt-auto flex flex-col items-center justify-end gap-2 p-2 sm:flex-row">
         <a
           href="https://agnieszka-wilczek.netlify.app"
           target="_blank"

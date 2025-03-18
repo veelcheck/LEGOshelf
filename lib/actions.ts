@@ -1,7 +1,9 @@
 "use server";
 import { TLegoSet } from "@/lib/types";
 
-export const fetchLegoSet = async (setNum: string): Promise<TLegoSet> => {
+export const fetchLegoSet = async (
+  setNum: string,
+): Promise<TLegoSet | null> => {
   const response = await fetch(
     `https://rebrickable.com/api/v3/lego/sets/${setNum}-1/`,
     {
@@ -14,8 +16,9 @@ export const fetchLegoSet = async (setNum: string): Promise<TLegoSet> => {
   );
 
   if (!response.ok) {
-    throw new Error(`Error fetching data: ${response.status}`);
+    return null;
   }
+  
   const data: TLegoSet = await response.json();
   return data;
 };

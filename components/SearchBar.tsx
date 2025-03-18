@@ -1,12 +1,19 @@
+"use client";
+
 import Button from "@/components/Button";
 import { searchSchema, TSearchSchema } from "@/lib/types";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
-import { useSearchContext } from "@/context/SearchContex";
+// import { useSearchContext } from "@/context/SearchContex";
 import { useRouter } from "next/navigation";
+import { useState } from "react";
 
 export default function SearchBar() {
-  const { setSearchNum } = useSearchContext();
+  // const { setSearchNum } = useSearchContext();
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const [searchNum, setSearchNum] = useState<TSearchSchema>(() => ({
+    searchNum: "",
+  }));
   const router = useRouter();
 
   const {
@@ -23,7 +30,7 @@ export default function SearchBar() {
   };
 
   const onSubmit = (data: TSearchSchema) => {
-    setSearchNum(data.searchNum);
+    setSearchNum(data);
     router.push(`/lego-set/${data.searchNum}`);
   };
 
