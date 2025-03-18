@@ -7,11 +7,13 @@ export type TSignUpSchema = z.infer<typeof signUpSchema>;
 export type TSearchSchema = z.infer<typeof searchSchema>;
 
 export type TLegoSet = {
-  set_num: string;
+  last_modified_dt: string;
   name: string;
-  year: string;
   num_parts: number;
   set_img_url: string;
+  set_num: string;
+  theme_id: number;
+  year: number;
 };
 
 export const signUpSchema = z

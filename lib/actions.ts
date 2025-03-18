@@ -18,7 +18,8 @@ export const fetchLegoSet = async (
   if (!response.ok) {
     return null;
   }
-  
+
   const data: TLegoSet = await response.json();
+  console.log(data);
   return data;
 };

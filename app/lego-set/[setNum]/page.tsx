@@ -2,17 +2,23 @@ import Image from "next/image";
 import { fetchLegoSet } from "@/lib/actions";
 import SearchBar from "@/components/SearchBar";
 import { notFound } from "next/navigation";
+import { TLegoSet } from "@/lib/types";
 
-type LegoCardProps = {
-  params: { setNum: string };
-};
+type LegoCardProps =
+  // params: { setNum: string };
+  Promise<{ slug: string[] }>;
 
-export default async function LegoCard({ params }: LegoCardProps) {
-  const { setNum } = params;
-  const LegoSet = await fetchLegoSet(setNum);
+export default async function LegoCard(props: {
+  params: LegoCardProps;
+}): Promise<JSX.Element | null> {
+  const { slug } = await props.params;
+  const setNum = slug[1];
+
+  const LegoSet: TLegoSet | null = await fetchLegoSet(setNum);
 
   if (!LegoSet) {
-    notFound(); // Show NotFound if the set is not found
+    notFound();
+    return null;
   }
 
   return (
