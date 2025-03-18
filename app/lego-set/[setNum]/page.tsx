@@ -8,7 +8,7 @@ type LegoCardProps = {
 };
 
 export default async function LegoCard({ params }: LegoCardProps) {
-  const { setNum } = await params;
+  const { setNum } = params;
   const LegoSet = await fetchLegoSet(setNum);
 
   if (!LegoSet) {
