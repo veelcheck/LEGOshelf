@@ -1,5 +1,4 @@
 import Image from "next/image";
-import { fetchLegoSet } from "@/lib/actions";
 import SearchBar from "@/components/SearchBar";
 import { notFound } from "next/navigation";
 
@@ -7,15 +6,30 @@ type LegoCardProps = {
   params: Promise<{ setNum: string }>;
 };
 
-export default async function LegoCard({ params }: LegoCardProps) {
+export default async function LegorCard({ params }: LegoCardProps) {
   const { setNum } = await params;
 
-  const LegoSet = await fetchLegoSet(setNum);
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000";
+  const apiUrl = `${baseUrl}/lego-set/${setNum}/api`;
 
-  if (!LegoSet) {
+  const response = await fetch(apiUrl);
+
+  if (!response.ok) {
     notFound();
-    return null; // Show NotFound if the set is not found
+    return null;
   }
+
+  const LegoSet = await response.json();
+
+  // export default async function LegoCard({ params }: LegoCardProps) {
+  //   const { setNum } = await params;
+
+  //   const LegoSet = await fetchLegoSet(setNum);
+
+  //   if (!LegoSet) {
+  //     notFound();
+  //     return null; // Show NotFound if the set is not found
+  //   }
 
   return (
     <>
