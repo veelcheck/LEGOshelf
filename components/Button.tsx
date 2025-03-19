@@ -1,3 +1,4 @@
+"use client";
 // Merges class names coming from different places without conflict.
 import { twMerge } from "tailwind-merge";
 import { ButtonProps } from "@/lib/types";
