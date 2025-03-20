@@ -9,7 +9,8 @@ type LegoCardProps = {
 export default async function LegorCard({ params }: LegoCardProps) {
   const { setNum } = await params;
 
-  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000";
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL;
+  // ?? "http://localhost:3000";
   const apiUrl = `${baseUrl}/lego-set/${setNum}/api`;
 
   const response = await fetch(apiUrl);
