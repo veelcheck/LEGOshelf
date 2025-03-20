@@ -6,6 +6,7 @@ import { TSignInSchema, signInSchema } from "@/lib/types";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
+import { supabase } from "@/util/supabaseClinet";
 
 const Login = () => {
   const router = useRouter();
@@ -22,27 +23,56 @@ const Login = () => {
 
   const onSubmitSignIn = async (data: TSignInSchema) => {
     try {
-      const response = await fetch("api/login", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(data),
+      const { email, password } = data;
+
+      const { data: user, error } = await supabase.auth.signInWithPassword({
+        email,
+        password,
       });
 
-      if (!response.ok) {
-        setSignInUserError("No user or wrong data");
-        throw new Error("Failed to get user");
+      if (error) {
+        setSignInUserError("Invalid credentials or user does not exist.");
+        throw new Error(error.message);
       }
 
-      const newUser = await response.json();
-      // logIn(newUser.id);
-      router.push(`/your-shelf/${newUser.id}`);
-      resetSignIn();
+      // If successful login, retrieve user ID
+      if (user) {
+        const userId = user.user.id;
+        console.log("User ID:", userId);
+
+        // Optionally: Redirect user to their shelf
+        router.push(`/your-shelf/${userId}`);
+      }
+
+      resetSignIn(); // Reset form fields after login
     } catch (error) {
-      console.error("Form submission: ", error);
+      console.error("Error during login: ", error);
     }
   };
+
+  // const onSubmitSignIn = async (data: TSignInSchema) => {
+  //   try {
+  //     const response = await fetch("login/api", {
+  //       method: "POST",
+  //       headers: {
+  //         "Content-Type": "application/json",
+  //       },
+  //       body: JSON.stringify(data),
+  //     });
+
+  //     if (!response.ok) {
+  //       setSignInUserError("No user or wrong data");
+  //       throw new Error("Failed to get user");
+  //     }
+
+  //     const newUser = await response.json();
+  //     // logIn(newUser.id);
+  //     router.push(`/your-shelf/${newUser.id}`);
+  //     resetSignIn();
+  //   } catch (error) {
+  //     console.error("Form submission: ", error);
+  //   }
+  // };
 
   return (
     <div className="flex min-h-[calc(100vh-144px)] flex-col pb-8 md:justify-center">
