@@ -15,7 +15,10 @@ export type TLegoSet = {
   num_parts: number;
   set_img_url: string;
 };
-const emailSchema = z.string().email();
+const emailSchema = z
+  .string()
+  .email()
+  .transform((email) => email.toLowerCase().trim());
 const passwordSignUpSchema = z
   .string()
   .min(10, "Password must be at least 10 characters long")

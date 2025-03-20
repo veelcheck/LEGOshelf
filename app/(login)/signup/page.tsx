@@ -36,11 +36,10 @@ const SignUp = () => {
       });
 
       const result = await response.json();
-      // Debugging
-      // console.log("Server response:", result);
 
       if (response.ok) {
         reset();
+        setEmailExists(null);
         router.push("your-shelf");
       } else {
         console.error("Error creating user:", result.error);
@@ -66,40 +65,44 @@ const SignUp = () => {
           onSubmit={handleSubmit(onSubmit)}
           className="flex w-3/4 flex-col gap-2 md:w-1/2 lg:w-1/3 xl:w-1/4"
         >
-          <label>name</label>
+          <label htmlFor="name">name</label>
           <input
             {...register("name")}
             className="rounded border px-4 py-2"
             type="text"
+            id="name"
           ></input>
           {errors.name && (
             <p className="text-lego-red">{`${errors.name.message}`}</p>
           )}
 
-          <label>email</label>
+          <label htmlFor="email">email</label>
           <input
             {...register("email")}
             className="rounded border px-4 py-2"
             type="email"
+            id="email"
           ></input>
           {errors.email && (
             <p className="text-lego-red">{`${errors.email.message}`}</p>
           )}
           {emailExists && <p className="text-lego-red">{emailExists}</p>}
-          <label>password</label>
+          <label htmlFor="password">password</label>
           <input
             {...register("password")}
             className="rounded border px-4 py-2"
             type="password"
+            id="password"
           ></input>
           {errors.password && (
             <p className="text-lego-red">{`${errors.password.message}`}</p>
           )}
-          <label>confirm password</label>
+          <label htmlFor="confirm-password">confirm password</label>
           <input
             {...register("confirmPassword")}
             className="rounded border px-4 py-2"
             type="password"
+            id="confirm-password"
           ></input>
           {errors.confirmPassword && (
             <p className="text-lego-red">{`${errors.confirmPassword.message}`}</p>
@@ -109,7 +112,11 @@ const SignUp = () => {
             className="mt-2 py-2 dark:bg-blue-600"
             type="submit"
           >
-            {isSubmitting ? "Submitting" : "Create your shelf"}
+            {isSubmitting ? (
+              <div className="animate-loading">Submitting...</div>
+            ) : (
+              "Create your shelf"
+            )}
           </Button>
           <Link href={"/login"} className="text-blue-500 underline">
             Sign in
