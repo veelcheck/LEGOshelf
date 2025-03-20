@@ -15,7 +15,7 @@ export default function Header() {
             className="max-h-[160px] max-w-[200px] bg-lego-red"
           ></Image>
         </Link>
-        <Link href="/your-shelf">
+        <Link href="/login">
           <Button className="my-4">Log shelf</Button>
         </Link>
       </div>

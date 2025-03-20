@@ -9,7 +9,8 @@ type LegoCardProps = {
 export default async function LegorCard({ params }: LegoCardProps) {
   const { setNum } = await params;
 
-  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000";
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL;
+  // ?? "http://localhost:3000";
   const apiUrl = `${baseUrl}/lego-set/${setNum}/api`;
 
   const response = await fetch(apiUrl);
@@ -20,16 +21,6 @@ export default async function LegorCard({ params }: LegoCardProps) {
   }
 
   const LegoSet = await response.json();
-
-  // export default async function LegoCard({ params }: LegoCardProps) {
-  //   const { setNum } = await params;
-
-  //   const LegoSet = await fetchLegoSet(setNum);
-
-  //   if (!LegoSet) {
-  //     notFound();
-  //     return null; // Show NotFound if the set is not found
-  //   }
 
   return (
     <>
