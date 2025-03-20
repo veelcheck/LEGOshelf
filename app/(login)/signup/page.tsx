@@ -30,7 +30,7 @@ const SignUp = () => {
         },
         body: JSON.stringify({
           name: data.name,
-          email: data.email,
+          email: data.email.toLowerCase().trim(),
           password: data.password,
         }),
       });
