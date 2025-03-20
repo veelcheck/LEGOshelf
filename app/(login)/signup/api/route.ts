@@ -1,4 +1,4 @@
-import { supabase } from "@/util/supabaseClinet";
+import { supabase } from "@/util/supabaseClient";
 import { NextResponse } from "next/server";
 
 type SignUpRequestBody = {
@@ -47,7 +47,7 @@ export async function POST(request: Request) {
     }
 
     return NextResponse.json(
-      { message: "User created successfully" },
+      { message: "User created successfully", userId: data.user.id },
       { status: 200 },
     );
   } catch (err) {
