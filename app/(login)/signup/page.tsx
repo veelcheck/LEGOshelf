@@ -40,7 +40,8 @@ const SignUp = () => {
       if (response.ok) {
         reset();
         setEmailExists(null);
-        router.push("your-shelf");
+        // TODO get userID and replace 1
+        router.push("your-shelf/1");
       } else {
         console.error("Error creating user:", result.error);
         if (
