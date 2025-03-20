@@ -21,16 +21,6 @@ export default async function LegorCard({ params }: LegoCardProps) {
 
   const LegoSet = await response.json();
 
-  // export default async function LegoCard({ params }: LegoCardProps) {
-  //   const { setNum } = await params;
-
-  //   const LegoSet = await fetchLegoSet(setNum);
-
-  //   if (!LegoSet) {
-  //     notFound();
-  //     return null; // Show NotFound if the set is not found
-  //   }
-
   return (
     <>
       <div className="bg-black py-4 md:py-0">
