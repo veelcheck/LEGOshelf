@@ -9,6 +9,9 @@ const nextConfig = {
       },
     ],
   },
+  experimental: {
+    runtime: "nodejs", // Ensure API routes run as a serverless function, not Edge
+  },
 };
 
 export default nextConfig;
